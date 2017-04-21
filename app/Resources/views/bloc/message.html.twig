@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="robust-content content container-fluid">
+        <div class="content-wrapper">
+
+            <h6 class="dropdown-menu-header text-uppercase mb-1"><i class="icon-mail6"></i> Contactez-nous </h6>
+
+            {% for flashMessage in app.session.flashbag.get('success') %}
+                {{ flashMessage }}
+            {% endfor %} <br>
+
+            {{ form(contact) }}
+
+        </div>
+    </div>
+
+
+{% endblock %}

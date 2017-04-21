@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="robust-content content container-fluid">
+        <div class="content-wrapper">
+
+
+            <h1><center> Notre Personnel </center></h1> <br>
+
+
+            <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Poste</th>
+                    <th>Ville</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {% for pers in employer %}
+                    <tr>
+                        <td>{{pers.Employer}}</td>
+                        <td>{{ pers.email }}</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+
+
+        </div>
+    </div>
+
+
+{% endblock %}
+
+
+

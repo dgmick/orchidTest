@@ -1,0 +1,222 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Contry
+ *
+ * @ORM\Table(name="contry")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ContryRepository")
+ */
+class Contry
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="SaoPaulo", type="string", length=255)
+     */
+    private $saoPaulo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Paris", type="string", length=255)
+     */
+    private $paris;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NewYork", type="string", length=255)
+     */
+    private $newYork;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="London", type="string", length=255)
+     */
+    private $london;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="HongKong", type="string", length=255)
+     */
+    private $hongKong;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Barcelona", type="string", length=255)
+     */
+    private $barcelona;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set saoPaulo
+     *
+     * @param string $saoPaulo
+     *
+     * @return Contry
+     */
+    public function setSaoPaulo($saoPaulo)
+    {
+        $this->saoPaulo = $saoPaulo;
+
+        return $this;
+    }
+
+    /**
+     * Get saoPaulo
+     *
+     * @return string
+     */
+    public function getSaoPaulo()
+    {
+        return $this->saoPaulo;
+    }
+
+    /**
+     * Set paris
+     *
+     * @param string $paris
+     *
+     * @return Contry
+     */
+    public function setParis($paris)
+    {
+        $this->paris = $paris;
+
+        return $this;
+    }
+
+    /**
+     * Get paris
+     *
+     * @return string
+     */
+    public function getParis()
+    {
+        return $this->paris;
+    }
+
+    /**
+     * Set newYork
+     *
+     * @param string $newYork
+     *
+     * @return Contry
+     */
+    public function setNewYork($newYork)
+    {
+        $this->newYork = $newYork;
+
+        return $this;
+    }
+
+    /**
+     * Get newYork
+     *
+     * @return string
+     */
+    public function getNewYork()
+    {
+        return $this->newYork;
+    }
+
+    /**
+     * Set london
+     *
+     * @param string $london
+     *
+     * @return Contry
+     */
+    public function setLondon($london)
+    {
+        $this->london = $london;
+
+        return $this;
+    }
+
+    /**
+     * Get london
+     *
+     * @return string
+     */
+    public function getLondon()
+    {
+        return $this->london;
+    }
+
+    /**
+     * Set hongKong
+     *
+     * @param string $hongKong
+     *
+     * @return Contry
+     */
+    public function setHongKong($hongKong)
+    {
+        $this->hongKong = $hongKong;
+
+        return $this;
+    }
+
+    /**
+     * Get hongKong
+     *
+     * @return string
+     */
+    public function getHongKong()
+    {
+        return $this->hongKong;
+    }
+
+    /**
+     * Set barcelona
+     *
+     * @param string $barcelona
+     *
+     * @return Contry
+     */
+    public function setBarcelona($barcelona)
+    {
+        $this->barcelona = $barcelona;
+
+        return $this;
+    }
+
+    /**
+     * Get barcelona
+     *
+     * @return string
+     */
+    public function getBarcelona()
+    {
+        return $this->barcelona;
+    }
+}

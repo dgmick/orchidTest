@@ -1,0 +1,351 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <div class="robust-content content container-fluid">
+        <div class="content-wrapper">
+            <div class="content-header row">
+                <div class="breadcrumb-wrapper col-xs-12">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ path('homepage') }}">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active">Projet Stat
+                        </li>
+                    </ol>
+                </div>
+                <div class="content-header-left col-md-6 col-xs-12">
+                    <h3 class="content-header-title mb-0">Projet Stat</h3>
+                    <p class="text-muted mb-0">Projet Stat examples</p>
+                </div>
+                <div class="content-header-right col-md-6 col-xs-12">
+                    <div role="group" aria-label="Button group with nested dropdown"
+                         class="btn-group float-md-right mt-1">
+                        <div role="group" class="btn-group">
+                            <button id="btnGroupDrop1" type="button" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false"
+                                    class="btn btn-outline-primary dropdown-toggle dropdown-menu-right"><i
+                                        class="icon-cog3 icon-left"></i> Settings
+                            </button>
+                            <div aria-labelledby="btnGroupDrop1" class="dropdown-menu"><a href="card-advance.html"
+                                                                                          class="dropdown-item">Advanced
+                                    Card</a><a href="component-buttons-extended.html" class="dropdown-item">Buttons
+                                    Extended</a></div>
+                        </div>
+                        <a href="calendars-clndr.html" class="btn btn-outline-primary"><i
+                                    class="icon-calendar5"></i></a><a href="timeline-center.html"
+                                                                      class="btn btn-outline-primary"><i
+                                    class="icon-bar-graph-2"></i></a>
+                    </div>
+                </div>
+
+            </div>
+            <br><br>
+
+            <!-- Dropdown Buttons with Arrow start -->
+            <div class="content-body">
+                <section id="dropdown-buttons-with-arrow">
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <div class="card">
+                                <div class="card-block">
+                                    <div class="card-body">
+                                        <button type="button" class="btn btn-success dropdown-toggle"
+                                                data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">
+                                            Choix d'une Ville
+                                        </button>
+                                        <div class="dropdown-menu arrow">
+                                            {% for city in cityList %}
+                                                <button class="dropdown-item">{{ city.City }}</button>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Dropdown Buttons with Arrow end -->
+
+                <!-- Stat Graphique start -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <section id="flot-pie-charts">
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Stat Graphique</h4>
+                                    <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+                                    <div class="heading-elements">
+                                        <ul class="list-inline mb-0">
+                                            <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+                                            <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="card-body collapse in">
+                                    <div class="card-block">
+                                    </div>
+                                    <div id="div_PieChart"></div>
+                                    <div id="div_ColumnChart"></div>
+
+                                    <script type="text/javascript"
+                                            src="https://www.gstatic.com/charts/loader.js"></script>
+                                    <script type="text/javascript">
+                                        {{ gc_draw([piechart, col], ['div_PieChart', 'div_ColumnChart']) }}
+                                    </script>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <!-- end Stat Graphique--->
+
+                    <!-- news orders start -->
+                    <div class="col-lg-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="media">
+                                    <div class="p-2 bg-warning white media-body">
+                                        <h5>New Orders</h5>
+                                        <h5 class="text-bold-400">4,65,879</h5>
+                                    </div>
+                                    <div class="p-2 text-xs-center bg-warning bg-darken-2 media-left media-middle">
+                                        <i class="icon-cart font-large-2 white"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- news orders end -->
+
+
+                    <!-- Audience by country Star-->
+                    <div class="col-lg-5">
+
+                        <div class="card">
+                            <div class="card-header no-border">
+                                <h4 class="card-title">Repatition of spend time</h4>
+                                <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+
+                                        <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+                                        <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div id="audience-list-scroll" class="table-responsive height-300 position-relative">
+                                    <table class="table table-bordered table-striped table-condensed">
+                                        <thead>
+                                        <tr>
+                                            <th>Country</th>
+                                            <th>% Session</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for spendtime in spendList %}
+                                            <tr>
+                                                <td>
+                                                    <i class="flag-icon flag-icon-{{ spendtime.logo }}"></i> {{ spendtime.contries }}
+                                                </td>
+                                                <td class="text-xs-center font-small-2">{{ spendtime.time }}%
+                                                    <progress class="progress progress-sm progress-success mb-0"
+                                                              value="{{ spendtime.time }}"
+                                                              max="100"></progress>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Audience by country End-->
+                    </div> <!-- col-lg-5 end -->
+
+
+                    <!-- column charts start -->
+                    {#   <div class="row">
+                           <div class="col-lg-4">
+                               <div class="card">
+                                   <div class="card-header">
+                                       <h4 class="card-title">Revenues & Cost </h4>
+                                       <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+                                       <div class="heading-elements">
+                                           <ul class="list-inline mb-0">
+                                               <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+                                               <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+                                           </ul>
+                                       </div>
+                                   </div>
+                                   <div class="card-body collapse in">
+                                       <div class="card-block">
+                                           <div id="div_chart"></div>
+
+                                           <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                                           <script type="text/javascript">
+                                               {{ gc_draw(col, 'div_chart') }}
+                                           </script>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>  #}
+                    <!-- column charts end -->
+                </div> <!-- end row -->
+            </div> <!-- div end contente body-->
+
+            <!-- Table column borders start-->
+            <div class="row">
+                <div class="col-lg-11">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Table column borders</h4>
+                            <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+                            <div class="heading-elements">
+                                <ul class="list-inline mb-0">
+                                    <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+                                    <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-body collapse in">
+                            <div class="card-block card-dashboard">
+                                jh
+
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-condensed">
+                                    <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Sold</th>
+                                        <th>Spend</th>
+                                        <th>Remain</th>
+                                        <th>Revenu</th>
+                                        <th>Costs</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>Account Manager</td>
+                                        <td><input type="text"/></td>
+                                        <td>data3</td>
+                                        <td>data4</td>
+                                        <td>data5</td>
+                                        <td>data6</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Art Director</td>
+                                        <td><input type="text"/></td>
+                                        <td>data3</td>
+                                        <td>data4</td>
+                                        <td>data5</td>
+                                        <td>data6</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Associate Creative Director</td>
+                                        <td><input type="text"/></td>
+                                        <td>data3</td>
+                                        <td>data4</td>
+                                        <td>data5</td>
+                                        <td>data6</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Group Creative Director</td>
+                                        <td><input type="text"/></td>
+                                        <td>data3</td>
+                                        <td>data4</td>
+                                        <td>data5</td>
+                                        <td>data6</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Managind Director</td>
+                                        <td><input type="text"/></td>
+                                        <td>data3</td>
+                                        <td>data4</td>
+                                        <td>data5</td>
+                                        <td>data6</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <section id="basic">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Personnel</h4>
+                                <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+                                        <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body collapse in">
+                                <div class="card-block card-dashboard ">
+                                    <form action="{{ path('stat') }}" method="post">
+                                        {{ form_start(poste) }}
+                                        <table class="table table-bordered table-striped table-condensed">
+                                            <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Temps</th>
+                                                <th>Poste</th>
+                                                <th>Ville</th>
+                                                <th>Edit</th>
+                                            </tr>
+                                            <tr>
+                                                <th>{{ form_widget(poste.Employer) }}</th>
+                                                <th>{{ form_widget(poste.Temps) }}</th>
+                                                <th>{{ form_widget(poste.Poste) }}</th>
+                                                <th>{{ form_widget(poste.City) }}</th>
+                                                <th></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                        </table>
+                                        {{ form_widget(poste.envoyer) }}
+                                        {{ form_end(poste) }}
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <!-- Table column borders end -->
+
+            <!-- Bar Chart start -->
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Bar Chart</h4>
+                            <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+                            <div class="heading-elements">
+                                <ul class="list-inline mb-0">
+                                    <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+                                    <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-body collapse in">
+                            <div class="card-block">
+                                <canvas id="bar-chart" height="200"></canvas>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- end div row-->
+
+        </div> <!-- div end content body -->
+    </div> <!-- content-wrapper -->
+    </div> <!-- end div robust-content content container-fluid -->
+
+
+{% endblock %}
