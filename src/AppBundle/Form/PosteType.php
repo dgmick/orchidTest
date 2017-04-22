@@ -17,18 +17,24 @@ class PosteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            /* Faut arrêter la drogue
             ->add('Poste', EntityType::class, array(
             'class' => 'AppBundle\Entity\Poste',
             'choice_label' => 'poste',
             'expanded' => false,
             'multiple' =>false,
             'label' => ' ' ))
+            */
           /*  ->add('Employer', EmployerType::class)
             ->add('City', CityType::class)
             ->add('Temps' , TempsType::class)
             ->add('envoyer', SubmitType::class)*/
 
-
+            ->add('poste')
+            ->add('city')
+            ->add('temps')
+            ->add('employer')
+            ->add('envoyer', SubmitType::class)
         ;
 
 

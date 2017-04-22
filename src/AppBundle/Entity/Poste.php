@@ -23,7 +23,7 @@ class Poste
 
     /**
      * @var Poste
-     * 
+     *
      * @ORM\Column(name="Poste", type="string", length=255)
      */
     private $poste;

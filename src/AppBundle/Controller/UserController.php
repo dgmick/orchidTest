@@ -20,6 +20,11 @@ use AppBundle\Entity\Poste;
 use AppBundle\Entity\City;
 use AppBundle\Entity\Temps;
 
+/**
+ * @deprecated
+ * L'object est de migrer toutes tes actions dans le UserBundle ce sera bcp plus simple à lire
+ * et évoluer
+ */
 class UserController extends Controller
 {
 
@@ -98,76 +103,5 @@ class UserController extends Controller
             'employer' => $employer
         ));
     }
-
-
-    /**
-     * @Route("/login", name="login")
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
-     */
-    public function loginAction(Request $request)
-    {
-        // Si le visiteur est déjà identifié, on le redirige vers l'accueil
-        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return $this->redirectToRoute('homepage');
-        }
-
-        // Le service authentication_utils permet de récupérer le nom d'utilisateur
-        // et l'erreur dans le cas où le formulaire a déjà été soumis mais était invalide
-        // (mauvais mot de passe par exemple)
-        $authenticationUtils = $this->get('security.authentication_utils');
-
-        return $this->render(':security:loging.html.twig', array(
-            'last_username' => $authenticationUtils->getLastUsername(),
-            'error'         => $authenticationUtils->getLastAuthenticationError(),
-        ));
-    }
-
-
-    /**
-     * @Route("/register", name="register")
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function registerAction(){
-
-
-
-
-        return $this->render('@FOSUser/Registration/register_content.html.twig',array(
-
-        ));
-    }
-
-    /**
-     * This is the route the login form submits to.
-     *
-     * But, this will never be executed. Symfony will intercept this first
-     * and handle the login automatically. See form_login in app/config/security.yml
-     *
-     * @Route("/login_check", name="login_check")
-     */
-    public function loginCheckAction()
-    {
-        throw new \Exception('This should never be reached!');
-    }
-
-    /**
-     * This is the route the user can use to logout.
-     *
-     * But, this will never be executed. Symfony will intercept this first
-     * and handle the logout automatically. See logout in app/config/security.yml
-     *
-     * @Route("/logout", name="logout")
-     */
-    public function logoutAction()
-    {
-        throw new \Exception('This should never be reached!');
-    }
-
-
-  
-    
-
-
 
 }

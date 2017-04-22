@@ -16,10 +16,10 @@ class Historique_employerType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Poste', PosteType::class)
-            ->add('Employer', EmployerType::class)
-            ->add('City', CityType::class)
-            ->add('Temps' , TempsType::class)
+            ->add('poste')
+            ->add('employer')
+            ->add('city')
+            ->add('temps')
             ->add('envoyer', SubmitType::class);
     }
 

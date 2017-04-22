@@ -15,17 +15,21 @@ class EmployerType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('Employer', EntityType::class, array(
-            'class' => 'AppBundle\Entity\Employer',
+        /*
+         * Actuellement dans ton entité employé c'est seulement une simple donnée et non une relation
+        $builder->add('employer', EntityType::class, array(
+            'class'        => 'AppBundle\Entity\Employer',
             'choice_label' => 'Employer',
-            'expanded' => false,
-            'multiple' =>false,
-            'label' => ' ' ,
-            
-            ))
+            'expanded'     => false,
+            'multiple'     => false,
+            'label'        => ' ',
+        ))
+        */
 
-
-           
+        $builder
+            ->add('employer')
+            ->add('city')
+            ->add('poste')
         ;
 
     }

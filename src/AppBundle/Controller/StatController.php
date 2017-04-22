@@ -121,11 +121,11 @@ class StatController extends Controller
 
         return $this->render('stat/projectSheet.html.twig', array(
             'spendList' => $spendList,
-            'cityList' => $cityList,
-            'postList' => $postList,
-            'poste' => $formPoste->createView(),
-            'piechart' => $pieChart,
-            'col' => $col,
+            'cityList'  => $cityList,
+            'postList'  => $postList,
+            'form'      => $formPoste->createView(),
+            'piechart'  => $pieChart,
+            'col'       => $col,
 
         ));
     }
@@ -263,13 +263,13 @@ class StatController extends Controller
 
         if($form->handleRequest($request)->isValid()){
             $em = $this->getDoctrine()->getManager();
+
             $em->persist($employer);
             $em->flush();
         }
 
         return $this->render('stat/projectSheet.html.twig',[
-            'employer' =>$form->createView(),
-
+            'form' => $form->createView(),
         ]);
 
     }

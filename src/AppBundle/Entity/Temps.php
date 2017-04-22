@@ -36,9 +36,9 @@ class Temps
      */
     private $TempLibre;
 
-    
-
-    
+    public function __toString() {
+        return $this->getTemps() . ' heures';
+    }
 
     /**
      * Get id
@@ -96,11 +96,5 @@ class Temps
     public function getTempLibre()
     {
         return $this->TempLibre;
-    }
-
-
-    public function __toString()
-    {
-        return $this->getTemps();
     }
 }
